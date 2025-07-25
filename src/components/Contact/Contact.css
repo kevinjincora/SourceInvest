@@ -1,0 +1,68 @@
+#contact {
+  @apply relative overflow-hidden;
+}
+
+#contact::before {
+  content: '';
+  @apply absolute inset-0 bg-blue-50 opacity-30;
+  z-index: -1;
+  animation: gradientShift 10s ease infinite;
+  background-size: 200% 200%;
+}
+
+#contact h2 {
+  @apply text-4xl font-bold text-center mb-8;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.contact-description {
+  @apply text-lg text-gray-700 max-w-3xl mx-auto mb-10 text-center;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.contact-form-container {
+  @apply max-w-lg mx-auto;
+  animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+.success-message {
+  @apply text-green-600 text-center mb-6;
+  animation: bounceIn 0.8s ease-out;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.contact-form {
+  @apply space-y-4;
+}
+
+.contact-form input,
+.contact-form textarea {
+  @apply w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300;
+  transform-origin: center bottom;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  @apply border-blue-500 shadow-md;
+  transform: scale(1.02);
+}
+
+.contact-form textarea {
+  @apply h-32;
+}
+
+.contact-form button {
+  @apply cta-button;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  @apply bg-blue-800;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

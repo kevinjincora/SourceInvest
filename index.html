@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Source Investments - Property Investment</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.9/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hero-bg {
+      background-image: url('https://via.placeholder.com/1920x800?text=Property+Investment+Hero');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Parallax effect */
+      background-repeat: no-repeat;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    .navbar {
+      transition: background-color 0.3s ease;
+    }
+    .navbar.scrolled {
+      background-color: rgba(0, 0, 0, 0.95);
+    }
+    .cta-button {
+      background-color: #1e3a8a;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .cta-button:hover {
+      background-color: #1e40af;
+      transform: scale(1.05);
+    }
+    .opportunity-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .opportunity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    function Navbar() {
+      const [scrolled, setScrolled] = React.useState(false);
+
+      React.useEffect(() => {
+        const handleScroll = () => {
+          if (window.scrollY > 50) {
+            setScrolled(true);
+          } else {
+            setScrolled(false);
+          }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      const smoothScroll = (e, targetId) => {
+        e.preventDefault();
+        const target = document.getElementById(targetId);
+        target.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      return (
+        <nav className={`fixed w-full z-10 navbar ${scrolled ? 'scrolled' : 'bg-transparent'}`}>
+          <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div className="text-white text-3xl font-bold">Source Investments</div>
+            <div className="space-x-6 text-white">
+              <a href="#home" onClick={(e) => smoothScroll(e, 'home')} className="hover:text-gray-300">Home</a>
+              <a href="#about" onClick={(e) => smoothScroll(e, 'about')} className="hover:text-gray-300">About</a>
+              <a href="#opportunities" onClick={(e) => smoothScroll(e, 'opportunities')} className="hover:text-gray-300">Opportunities</a>
+              <a href="#contact" onClick={(e) => smoothScroll(e, 'contact')} className="hover:text-gray-300">Contact</a>
+            </div>
+          </div>
+        </nav>
+      );
+    }
+
+    function Hero() {
+      return (
+        <section className="hero-bg h-screen flex items-center justify-center text-center text-white overlay" id="home">
+          <div className="container mx-auto px-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 fade-in">Creating Wealth Through Property</h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto fade-in" style={{ animationDelay: '0.2s' }}>
+              Source Investments specializes in sourcing and managing UK and UAE property investments for long-term wealth creation.
+            </p>
+            <a href="#contact" onClick={(e) => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="cta-button text-white font-semibold py-3 px-8 rounded-lg fade-in" style={{ animationDelay: '0.4s' }}>
+              Discover Investment Opportunities
+            </a>
+          </div>
+        </section>
+      );
+    }
+
+    function About() {
+      return (
+        <section id="about" className="py-20 bg-white">
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-bold text-center mb-8">Why Choose Source Investments?</h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-10 text-center">
+              Since 2014, Source Investments has been helping clients build high-performing property portfolios. Our end-to-end service, from sourcing to management, ensures you maximize returns with minimal effort.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <h3 className="text-xl font-semibold mb-4">Expert Sourcing</h3>
+                <p className="text-gray-600">We handpick the best UK and UAE properties through our trusted network of developers and agents.</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-semibold mb-4">Comprehensive Management</h3>
+                <p className="text-gray-600">Our in-house team, The Home Cloud, manages tenancies and maintenance for hassle-free investing.</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-semibold mb-4">Proven Track Record</h3>
+                <p className="text-gray-600">Our clients have seen significant capital appreciation and stable rental yields.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Opportunities() {
+      return (
+        <section id="opportunities" className="py-20 bg-gray-100">
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-bold text-center mb-8">Our Investment Opportunities</h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-10 text-center">
+              Explore a range of property investments tailored to your goals, from pre-construction to tenanted properties in high-growth markets.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow opportunity-card">
+                <img src="https://via.placeholder.com/400x300?text=Pre-Construction" alt="Pre-Construction" className="w-full h-48 object-cover rounded mb-4" />
+                <h3 className="text-xl font-semibold mb-4">Pre-Construction</h3>
+                <p className="text-gray-600">Invest early to benefit from capital appreciation during the build cycle.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow opportunity-card">
+                <img src="https://via.placeholder.com/400x300?text=Ready-to-Rent" alt="Ready-to-Rent" className="w-full h-48 object-cover rounded mb-4" />
+                <h3 className="text-xl font-semibold mb-4">Ready-to-Rent</h3>
+                <p className="text-gray-600">Complete properties ready for immediate rental income.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow opportunity-card">
+                <img src="https://via.placeholder.com/400x300?text=Tenanted" alt="Tenanted" className="w-full h-48 object-cover rounded mb-4" />
+                <h3 className="text-xl font-semibold mb-4">Tenanted Properties</h3>
+                <p className="text-gray-600">Instant cash flow with tenants already in place.</p>
+              </div>
+            </div>
+            <div className="text-center mt-10">
+              <a href="#contact" onClick={(e) => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="cta-button text-white font-semibold py-3 px-8 rounded-lg">View Latest Opportunities</a>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Contact() {
+      const [formData, setFormData] = React.useState({ name: '', email: '', message: '' });
+      const [submitted, setSubmitted] = React.useState(false);
+
+      const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 3000); // Reset after 3 seconds
+      };
+
+      return (
+        <section id="contact" className="py-20 bg-white">
+          <div className="container mx-auto px-6">
+            <h2 className="text-4xl font-bold text-center mb-8">Get in Touch</h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-10 text-center">
+              Ready to build your property portfolio? Contact us to discuss your investment goals.
+            </p>
+            <div className="max-w-lg mx-auto">
+              {submitted ? (
+                <p className="text-green-600 text-center mb-6 fade-in">Thank you for your message! We'll get back to you soon.</p>
+              ) : (
+                <div className="space-y-4">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <textarea
+                    name="message"
+                    placeholder="Message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full p-3 border rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  ></textarea>
+                  <button onClick={handleSubmit} className="cta-button text-white font-semibold py-3 px-8 rounded-lg w-full">
+                    Send Message
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Footer() {
+      return (
+        <footer className="bg-gray-900 text-white py-10">
+          <div className="container mx-auto px-6 text-center">
+            <p className="mb-4">Source Investments | Creating and protecting wealth through property</p>
+            <p className="mb-4">8 St James's Square, London, SW1Y 4JU, UK</p>
+            <p className="mb-4">Contact us: <a href="mailto:info@sourceinvestments.com" className="underline hover:text-gray-300">info@sourceinvestments.com</a></p>
+            <div className="flex justify-center space-x-4">
+              <a href="https://facebook.com" className="hover:text-gray-300">Facebook</a>
+              <a href="https://linkedin.com" className="hover:text-gray-300">LinkedIn</a>
+            </div>
+            <p className="mt-6">© 2025 Source Investments. All rights reserved.</p>
+          </div>
+        </footer>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <Navbar />
+          <Hero />
+          <About />
+          <Opportunities />
+          <Contact />
+          <Footer />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

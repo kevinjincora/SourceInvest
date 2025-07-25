@@ -1,0 +1,67 @@
+#opportunities h2 {
+  @apply text-4xl font-bold text-center mb-8 gradient-text;
+}
+
+.opportunities-description {
+  @apply text-lg text-gray-700 max-w-3xl mx-auto mb-10 text-center;
+  animation: fadeIn 1s ease-out;
+}
+
+.opportunities-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.opportunity-card {
+  @apply bg-white p-6 rounded-lg shadow-lg relative overflow-hidden;
+  transition: all 0.5s ease;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  animation: fadeIn 1s ease-out;
+}
+
+.opportunity-card::before {
+  content: '';
+  @apply absolute inset-0 bg-blue-900 opacity-0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.opportunity-card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.opportunity-card:hover::before {
+  opacity: 0.05;
+}
+
+.opportunity-card img {
+  @apply w-full h-48 object-cover rounded mb-4 transition-transform duration-500;
+}
+
+.opportunity-card:hover img {
+  transform: scale(1.05);
+}
+
+.opportunity-card h3 {
+  @apply text-xl font-semibold mb-4 relative z-10;
+  transition: color 0.3s ease;
+}
+
+.opportunity-card:hover h3 {
+  @apply text-blue-900;
+}
+
+.opportunity-card p {
+  @apply text-gray-600 relative z-10;
+}
+
+/* Staggered animations for cards */
+.opportunity-card:nth-child(1) {
+  animation: slideInFromLeft 0.8s ease-out 0.2s both;
+}
+.opportunity-card:nth-child(2) {
+  animation: slideInFromBottom 0.8s ease-out 0.4s both;
+}
+.opportunity-card:nth-child(3) {
+  animation: slideInFromRight 0.8s ease-out 0.6s both;
+}

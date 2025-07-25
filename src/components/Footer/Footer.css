@@ -1,0 +1,53 @@
+footer {
+  @apply relative overflow-hidden;
+}
+
+footer::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-b from-transparent to-gray-900 opacity-20;
+  animation: gradientShift 10s ease infinite;
+  background-size: 200% 200%;
+}
+
+.footer-text {
+  @apply mb-4 transition-all duration-300;
+}
+
+.footer-text:hover {
+  @apply text-blue-300;
+  transform: translateX(5px);
+}
+
+.footer-link {
+  @apply underline transition-all duration-300;
+}
+
+.footer-link:hover {
+  @apply text-blue-300;
+  text-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+.footer-social-links {
+  @apply flex justify-center space-x-4;
+}
+
+.footer-social-links a {
+  @apply transition-all duration-300;
+}
+
+.footer-social-links a:hover {
+  @apply text-blue-300;
+  transform: translateY(-3px) scale(1.1);
+}
+
+.footer-copyright {
+  @apply mt-6 transition-all duration-500;
+}
+
+/* Floating elements animation */
+footer::after {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full pointer-events-none;
+  background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 30%);
+  animation: float 15s ease-in-out infinite;
+}

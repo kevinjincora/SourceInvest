@@ -1,0 +1,60 @@
+#about {
+  @apply relative overflow-hidden;
+}
+
+#about h2 {
+  @apply text-4xl font-bold text-center mb-8;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.about-description {
+  @apply text-lg text-gray-700 max-w-3xl mx-auto mb-10 text-center;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.features-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.feature-item {
+  @apply text-center p-6 rounded-lg bg-white bg-opacity-80 backdrop-blur-sm shadow-md;
+  transition: all 0.5s ease;
+  animation: fadeIn 0.8s ease-out;
+  transform-style: preserve-3d;
+}
+
+.feature-item:hover {
+  @apply bg-white shadow-lg;
+  transform: translateY(-5px) rotateY(10deg);
+}
+
+.feature-item h3 {
+  @apply text-xl font-semibold mb-4;
+  position: relative;
+  display: inline-block;
+}
+
+.feature-item h3::after {
+  content: '';
+  @apply block w-0 h-1 bg-blue-900 mx-auto mt-2;
+  transition: width 0.3s ease;
+}
+
+.feature-item:hover h3::after {
+  @apply w-full;
+}
+
+.feature-item p {
+  @apply text-gray-600;
+}
+
+/* Staggered animations for feature items */
+.feature-item:nth-child(1) {
+  animation: slideInFromLeft 0.8s ease-out 0.3s both;
+}
+.feature-item:nth-child(2) {
+  animation: slideInFromBottom 0.8s ease-out 0.5s both;
+}
+.feature-item:nth-child(3) {
+  animation: slideInFromRight 0.8s ease-out 0.7s both;
+}

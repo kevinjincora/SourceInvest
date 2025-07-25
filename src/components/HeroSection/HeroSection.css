@@ -1,0 +1,46 @@
+.hero-bg {
+  @apply h-screen flex items-center justify-center text-center text-white relative overflow-hidden;
+  background-image: url('https://via.placeholder.com/1920x800?text=Property+Investment+Hero');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.hero-bg::before {
+  content: '';
+  @apply absolute inset-0;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(0, 0, 0, 0.7) 100%);
+  animation: gradientShift 10s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.overlay {
+  @apply w-full h-full flex items-center justify-center relative z-10;
+}
+
+.hero-bg h1 {
+  @apply text-5xl md:text-6xl font-bold mb-6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3b82f6, 0 0 20px #3b82f6; }
+  to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #1e40af, 0 0 40px #1e40af; }
+}
+
+.hero-bg p {
+  @apply text-xl md:text-2xl mb-8 max-w-2xl mx-auto;
+  animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.hero-bg .cta-button {
+  animation: pulse 2s infinite, fadeIn 1s ease-out 0.8s both;
+}
