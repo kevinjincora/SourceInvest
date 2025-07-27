@@ -101,7 +101,7 @@ function Homepage() {
 
       {/* Footer */}
       <footer className="footer">
-        <div>© 2025 Source Investments. All rights reserved.</div>
+        {/* <div>© 2025 Source Investments. All rights reserved.</div> */}
         <div>
           <a href="#privacy">Privacy Policy</a>
           <a href="#terms">Terms of Service</a>
