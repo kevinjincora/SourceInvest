@@ -12,7 +12,7 @@ function Footer() {
           <a href="https://facebook.com" className="footer-link">Facebook</a>
           <a href="https://linkedin.com" className="footer-link">LinkedIn</a>
         </div>
-        <p className="footer-copyright">© 2025 Source Investments. All rights reserved.</p>
+        <p className="footer-copyright">© 2025 Source Investments. All rights reserved</p>
       </div>
     </footer>
   );
